@@ -1,0 +1,28 @@
+{{ block title }}Результаты{{ endblock }}
+{{ block content }}
+
+    <p>
+        {{ if same_choice }}
+            Вы оба выбрали {{ my_decision }}.
+        {{ else }}
+            Ваш выбор {{ my_decision }}, выбор другого человека {{ opponent_decision }}.
+        {{ endif }}
+    </p>
+
+    <p>
+        {{ if caught }}
+            Вы нарушили правила, как результат вы получаете {{ player.payoff }}.
+        {{ else }}
+            Как результат вы заработали {{ player.payoff }}.
+        {{ endif }}
+    </p>
+
+    <p>
+        Ваш общий заработок за все раунды: {{ player.total_payoff }}.
+    </p>
+
+    {{ next_button }}
+
+    {{ include_sibling 'instructions.html' }}
+
+{{ endblock }}
