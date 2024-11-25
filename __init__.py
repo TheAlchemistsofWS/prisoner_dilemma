@@ -11,7 +11,7 @@ payoffs.
 class C(BaseConstants):
     NAME_IN_URL = 'prisoner'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 1
+    NUM_ROUNDS = 4
     PAYOFF_A = cu(5)
     PAYOFF_B = cu(3)
     PAYOFF_C = cu(1)
