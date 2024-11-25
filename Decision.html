@@ -9,7 +9,7 @@
             </tr>
             <tr>
                 <th>Сотрудничать</th>
-                <th>Предать</th>
+                <th>Обмануть</th>
             </tr>
             <tr>
                 <th rowspan="2"><span>Вы</span></th>
@@ -18,16 +18,12 @@
                 <td>{{ C.PAYOFF_D }}, {{C.PAYOFF_A}}</td>
             </tr>
             <tr>
-                <td><button name="cooperate" value="False" class="btn btn-primary btn-large">Я предам</button></td>
+                <td><button name="cooperate" value="False" class="btn btn-primary btn-large">Я обману</button></td>
                 <td>{{C.PAYOFF_A}}, {{ C.PAYOFF_D }}</td>
                 <td>{{C.PAYOFF_C}}, {{C.PAYOFF_C}}</td>
             </tr>
         </table>
     </div>
-
-    <p>Здесь вы можете пообщаться с другим участником.</p>
-
-    {{ chat }}
 
     {{ include_sibling 'instructions.html' }}
 
