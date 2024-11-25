@@ -10,7 +10,7 @@ payoffs.
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'prisoner'
+    NAME_IN_URL = 'prisoner_tax'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 8
     PAYOFF_A = cu(5)
@@ -19,16 +19,15 @@ class C(BaseConstants):
     PAYOFF_D = cu(0)
     PROBABILITY_0 = 0
     PROBABILITY_1 = 0.4
-    SUBSIDY_1, SUBSIDY_2 = 2, 1
-    TAX_1, TAX_2 = 1, 2
-    NUM_ROUNDS = 4
+    SUBSIDY_1, SUBSIDY_2 = 2, 0
+    TAX_1, TAX_2 = 0, 2
 
 class Subsession(BaseSubsession):
     pass
 
 
 class Group(BaseGroup):
-    pass
+    detection_roll = models.FloatField(initial=0)
 
 
 class Player(BasePlayer):
@@ -42,6 +41,7 @@ class Player(BasePlayer):
 
 # FUNCTIONS
 def set_payoffs(group: Group):
+    group.detection_roll = random.random()
     for p in group.get_players():
         set_payoff(p)
 
@@ -60,23 +60,24 @@ def set_payoff(player: Player):
     }
     other = other_player(player)
     player.payoff = payoff_matrix[(player.cooperate, other.cooperate)]
-    t = random.random()
+    player.caught = False
 
-    if player.cooperate and  other.cooperate == False and t < C.PROBABILITY_1:
-        player.payoff += C.SUBSIDY_1 if player.round_number <= 4 else C.SUBSIDY_2
-
-    if t < C.PROBABILITY_1 and player.cooperate == False:
-        player.payoff = 0  # Наказание за выбор "defect"
-        player.caught = True
-    else:
-        player.caught = False
+    if player.group.detection_roll < C.PROBABILITY_1:
+        if player.cooperate:
+            if other.cooperate == False:
+                if player.round_number <= 4:
+                    player.payoff += C.SUBSIDY_1
+                else:
+                    player.payoff += C.SUBSIDY_2
+        else:
+            player.caught = True
+            player.payoff = 0
 
     if player.round_number <= 4:
         player.payoff -= C.TAX_1
     else:
         player.payoff -= C.TAX_2
 
-    player.total_payoff += player.payoff
 
 # PAGES
 class Introduction(Page):
