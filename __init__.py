@@ -10,15 +10,15 @@ payoffs.
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'prisoner'
+    NAME_IN_URL = 'prisoner_distrib'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 5
+    NUM_ROUNDS = 4
     PAYOFF_A = cu(5)
     PAYOFF_B = cu(3)
     PAYOFF_C = cu(1)
     PAYOFF_D = cu(0)
     PROBABILITY_0 = 0
-    PROBABILITY_1 = 0.8
+    PROBABILITY_1 = 0.4
     SUBSIDY_1, SUBSIDY_2 = 1, 0.5
     TAX_1, TAX_2 = 0.5, 1
 
