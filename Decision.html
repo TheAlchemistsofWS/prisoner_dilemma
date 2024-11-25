@@ -1,33 +1,29 @@
-{{ block title }}Your Choice{{ endblock }}
+{{ block title }}Ваш выбор{{ endblock }}
 {{ block content }}
 
     <div class="form-group required">
         <table class="table table-bordered text-center" style="width: auto; margin: auto">
             <tr>
                 <th colspan="2" rowspan="2"></th>
-                <th colspan="2">The Other Participant</th>
+                <th colspan="2">Другой участник</th>
             </tr>
             <tr>
-                <th>Cooperate</th>
-                <th>Defect</th>
+                <th>Кооперация</th>
+                <th>Оппортунизм</th>
             </tr>
             <tr>
-                <th rowspan="2"><span>You</span></th>
-                <td><button name="cooperate" value="True" class="btn btn-primary btn-large">I will cooperate</button></td>
+                <th rowspan="2"><span>Вы</span></th>
+                <td><button name="cooperate" value="True" class="btn btn-primary btn-large">Я буду сотрудничать</button></td>
                 <td>{{C.PAYOFF_B}}, {{C.PAYOFF_B}}</td>
                 <td>{{ C.PAYOFF_D }}, {{C.PAYOFF_A}}</td>
             </tr>
             <tr>
-                <td><button name="cooperate" value="False" class="btn btn-primary btn-large">I will defect</button></td>
+                <td><button name="cooperate" value="False" class="btn btn-primary btn-large">Я обману</button></td>
                 <td>{{C.PAYOFF_A}}, {{ C.PAYOFF_D }}</td>
                 <td>{{C.PAYOFF_C}}, {{C.PAYOFF_C}}</td>
             </tr>
         </table>
     </div>
-
-    <p>Here you can chat with the other participant.</p>
-
-    {{ chat }}
 
 
     {{ include_sibling 'instructions.html' }}
