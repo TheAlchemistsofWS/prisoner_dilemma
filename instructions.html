@@ -6,33 +6,28 @@
     </h3>
 
     <p>
-        In this study, you will be randomly and anonymously paired with another
-        participant.
-        Each of you simultaneously and privately chooses whether you want to
-        cooperate or defect.
-        Your payoffs will be determined by the choices of both as below:
+В этом исследовании вы будете случайным образом разбиты на пары. Каждый из вас одновременно и анонимно выбирает одну из двух стратегий: сотрудничать или обмануть. В зависимости от вашего выбора и выбора соперника вы получите соответствующие выплаты, которые вы можете посмотреть в матрице выигрышей.
     </p>
-    <p><i>In each cell, the amount to the left is the payoff for
-        you and to the right for the other participant.</i></p>
+    <p><i>В каждой ячейке сумма слева — это выплата для вас, а справа — для другого участника.</i></p>
 
     <table class='table table-bordered text-center'
            style='width: auto; margin: auto'>
         <tr>
             <th colspan=2 rowspan=2></th>
-            <th colspan=2>The Other Participant</th>
+            <th colspan=2>Другой участник</th>
         </tr>
         <tr>
-            <th>Cooperate</th>
-            <th>Defect</th>
+            <th>Кооперация</th>
+            <th>Оппортунизм</th>
         </tr>
         <tr>
-            <th rowspan=2><span style="transform: rotate(-90deg);">You</span></th>
-            <th>Cooperate</th>
+            <th rowspan=2><span style="transform: rotate(-90deg);">Вы</span></th>
+            <th>Кооперация</th>
             <td>{{ C.PAYOFF_B }}, {{ C.PAYOFF_B }}</td>
             <td>0, {{ C.PAYOFF_A }}</td>
         </tr>
         <tr>
-            <th>Defect</th>
+            <th>Оппортунизм</th>
             <td>{{ C.PAYOFF_A }}, 0</td>
             <td>{{ C.PAYOFF_C }}, {{ C.PAYOFF_C }}</td>
         </tr>
