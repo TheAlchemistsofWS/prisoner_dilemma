@@ -1,16 +1,16 @@
-{{ block title }}Results{{ endblock }}
+{{ block title }}Результаты{{ endblock }}
 {{ block content }}
 
     <p>
         {{ if same_choice }}
-            Both of you chose to {{ my_decision }}.
+            Вы оба выбрали {{ my_decision }}.
         {{ else }}
-            You chose to {{ my_decision }} and the other participant chose to {{ opponent_decision }}.
+            Ваш выбор {{ my_decision }}, выбор другого человека {{ opponent_decision }}.
         {{ endif }}
     </p>
 
     <p>
-        As a result, you earned {{ player.payoff }}.
+        Как результат вы заработали {{ player.payoff }}.
     </p>
 
     {{ next_button }}
